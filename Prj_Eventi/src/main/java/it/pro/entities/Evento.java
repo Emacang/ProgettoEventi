@@ -26,7 +26,10 @@ public class Evento {
 	private boolean disponibilita;
 	private LocalDate dataEvento;
 	private String locandina;
+	private String banner;
+	private String logo;
 	
+
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Utente utente;
 
@@ -100,6 +103,22 @@ public class Evento {
 
 	public void setUtente(Utente utente) {
 		this.utente = utente;
+	}
+	
+	public String getBanner() {
+		return banner;
+	}
+
+	public void setBanner(String banner) {
+		this.banner = banner;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 
 }

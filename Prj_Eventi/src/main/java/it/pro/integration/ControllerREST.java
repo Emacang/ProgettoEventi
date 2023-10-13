@@ -2,7 +2,6 @@ package it.pro.integration;
 
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.pro.dto.LoginDTO;
 import it.pro.entities.Evento;
 import it.pro.entities.Utente;
 import it.pro.response.LoginResponse;
@@ -64,7 +64,7 @@ public class ControllerREST {
 	}
 	
 	@PostMapping("login")
-	LoginResponse login(@RequestBody Utente u) {
+	LoginResponse login(@RequestBody LoginDTO u) {
 		Utente utente = utenteService.findByEmailAndPassword(u.getEmail(), u.getPassword());
 		LoginResponse response;
 		
@@ -75,6 +75,8 @@ public class ControllerREST {
 		} 
 		return response;
 	}
+	
+	
 	
 	
 	

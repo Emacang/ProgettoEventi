@@ -2,6 +2,8 @@ package it.pro.entities;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,13 +18,17 @@ public class Utente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String UserID;
 
+   @JsonIgnore
     private String password;
+ 
     private String firma;
     private String tipo;
     private String nome;
     private String cognome;
+    @JsonIgnore
     private String nascita;
     private String email;
+    @JsonIgnore
     private LocalDate dataIscrizione;
 
     public String getUserID() {
