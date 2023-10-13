@@ -39,7 +39,7 @@ function logIn(e) {
 	.then(json => {
 		if (json.esito == "ok"){
 		sessionStorage.setItem("utente", JSON.stringify(json.utente));
-		window.location.href = "home.html"
+		window.location.href = "HomeAdmin.html"
 
 	} else {
 
