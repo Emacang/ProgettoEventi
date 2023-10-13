@@ -1,6 +1,7 @@
 let signUpButton = document.getElementById('signUp');
 let signInButton = document.getElementById('signIn');
 let container = document.getElementById('container');
+let forget = document.getElementById('forget');
 
 let loginButton = document.getElementById('login');
 
@@ -55,13 +56,15 @@ function logIn(e) {
 
 	} else {
 
-		let alert = `
-                        <div class="alert alert-danger alert-dismissible fade show position-fixed bottom-0 end-0" role="alert">
-                             Email o Password errate.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>`
+		// let alert = `
+        //                 <div class="alert alert-danger alert-dismissible fade show position-fixed bottom-0 end-0" role="alert">
+        //                      Email o Password errate.
+        //                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        //                 </div>`
 
-						spazioAlert.innerHTML = alert;
+		let dimenticata = ` <div style="color: red;"> Email o Password errate</div>`
+
+						forget.innerHTML = dimenticata;
 		// throw "utente non registrato"
 	}
 	})
