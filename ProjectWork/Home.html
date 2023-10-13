@@ -101,8 +101,51 @@
 
       </main>
 
+      
+      <div class="containerTesto w-100 text-center py-5" style="padding: 0 30% 0 30%; font-size: 18px;">
+        <h1 class="benvenutoTitolo py-5">Benvenuti da blabla!</h1>
+        <p class="focus mx-5" >Considerate la vostra semenza: <br>
+          fatti non foste a viver come bruti,ma per seguir virtute e canoscenza. <br></p>
+         <p> And place my merit in the eye of scorn,Upon thy side against myself I’ll fight And prove thee virtuous, though thou art forsworn.With mine own weakness being best acquainted,Upon thy part I can set down a story Of faults conceal’d, wherein I am attainted, That thou in losing me shalt win much glory.</p>
+        <p class="personaCitazione py-5"> Dante</p>
+    </div>
+
+      <div class="caroselloSfondo w-100 ">
+        <h1 class="inostriEventi py-5 text-center">Eventi disponibili</h1>
+        <div class="swiper carosello">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <img class="img-fluid" src="https://source.unsplash.com/600x400/?portugal" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img class="img-fluid" src="https://source.unsplash.com/600x400/?poland" alt="">
+
+                </div>
+                <div class="swiper-slide">
+                    <img class="img-fluid" src="https://source.unsplash.com/600x400/?scotland" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                    <img class="img-fluid" src="https://source.unsplash.com/600x400/?sicily" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img class="img-fluid" src="https://source.unsplash.com/600x400/?italy" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img class="img-fluid" src="https://source.unsplash.com/600x400/?france" alt="">
+                </div>
 
 
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+
+
+        </div>
+    </div>
      
 
       <footer class="page-footer font-small indigo mt-auto h-100">
@@ -196,6 +239,7 @@
 
               pagination: {
               el: '.swiper-pagination',
+              clickable: true
               },
 
               navigation: {
@@ -207,6 +251,43 @@
               el: '.swiper-scrollbar',
               },
         });
+
+var carosello = new Swiper(".carosello", {
+
+pagination: {
+    el: '.swiper-pagination',
+    
+},
+
+
+autoplay: {
+    delay: 2500, 
+    disableOnInteraction: false,
+},
+
+slidesPerView: 2,
+spaceBetween: 10,
+
+
+breakpoints: {
+    576: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+    },
+    768: {
+        slidesPerView: 3,
+        spaceBetween: 40,
+    },
+    992: {
+        slidesPerView: 4,
+        spaceBetween: 50,
+    },
+    1200: {
+        slidesPerView: 6,
+        spaceBetween: 50,
+    },
+},
+});
    </script>
 </body>
 </html>
