@@ -9,5 +9,6 @@ public interface UtenteService {
 	List<Utente> getAll();
 	Utente getUtente(String UserID);
 	Utente add(Utente u);
+	Utente findByEmailAndPassword(String email, String password);
 
 }

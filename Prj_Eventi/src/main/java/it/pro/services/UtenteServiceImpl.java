@@ -32,4 +32,10 @@ public class UtenteServiceImpl implements UtenteService {
 		return dao.save(u);
 	}
 
+	@Override
+	public Utente findByEmailAndPassword(String email, String password) {
+		// TODO Auto-generated method stub
+		return dao.findByEmailAndPassword(email, password);
+	}
+
 }
