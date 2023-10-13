@@ -2,10 +2,9 @@ let btnLogOut = document.querySelector("#btnLogOut");
 
 function logOut(){
     
-        console.log("culo");
-        sessionStorage.clear;
-        window.location.href = "Home.html"
+        localStorage.clear();
+        window.location.href = "home.html"
     
 }
 
-btnLogOut.addEventListener("click", logOut());
+btnLogOut.addEventListener("click", logOut);

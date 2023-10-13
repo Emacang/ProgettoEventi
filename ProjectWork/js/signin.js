@@ -38,8 +38,20 @@ function logIn(e) {
 	.then(response => response.json())
 	.then(json => {
 		if (json.esito == "ok"){
-		sessionStorage.setItem("utente", JSON.stringify(json.utente));
+		localStorage.setItem("utente", JSON.stringify(json.utente));
+
+		let user = JSON.parse(localStorage.getItem("utente"));
+        let tipoUtente = user.tipo;
+
+		if (tipoUtente == "A"){
+
+			
 		window.location.href = "HomeAdmin.html"
+		}else if(tipoUtente == "B"){
+			window.location.href = "homeUtente.html"
+		}else{
+			window.location.href = "SignIn.html"
+		}
 
 	} else {
 
@@ -56,8 +68,3 @@ function logIn(e) {
 	.catch(err => console.log(err))
 
 }
-
-let user = JSON.parse(sessionStorage.getItem("utente"));
-let tipoUtente = user.tipo;
-
-console.log('tipo', tipoUtente);
