@@ -1,0 +1,15 @@
+.logo-titolo{
+    width: 30%;
+}
+
+.stile-det{
+    font-style: italic;
+    font-weight: bold
+}
+
+.dettaglioEvento{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgb(222, 226, 230);
+}

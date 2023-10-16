@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">Aggiungi  Evento</h2>
+          </div>
+        
+          <div class="panel-body">
+            <form class="form-horizontal" data-bind="submit: addEvent">
+              
+        
+              <div class="form-group" data-bind="with: newBook">
+                <label for="inputTitle" class="col-sm-2 control-label">Tipologia</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputTip" data-bind="value:Title"/>
+                </div>
+        
+                <label for="inputYear" class="col-sm-2 control-label">caratteristiche</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputCar" data-bind="value:Year"/>
+                </div>
+        
+                <label for="inputGenre" class="col-sm-2 control-label">Descrizione</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputDes" data-bind="value:Genre"/>
+                </div>
+        
+                <label for="inputPrice" class="col-sm-2 control-label">Luogo Evento</label>
+                <div class="col-sm-10">
+                  <input type="text" step="any" class="form-control" id="inputLuo" data-bind="value:Price"/>
+                </div>
+
+                <label for="inputGenre" class="col-sm-2 control-label">Disponibilità</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputDis" data-bind="value:Genre"/>
+                </div>
+
+                <label for="inputGenre" class="col-sm-2 control-label">Data evento</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputDat" data-bind="value:Genre"/>
+                </div>
+
+                <label for="inputGenre" class="col-sm-2 control-label">Locandina</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputLoc" data-bind="value:Genre"/>
+                </div>
+
+                <label for="inputGenre" class="col-sm-2 control-label">Banner</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputBan" data-bind="value:Genre"/>
+                </div>
+
+                <label for="inputGenre" class="col-sm-2 control-label">Logo</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputLog" data-bind="value:Genre"/>
+                </div>
+
+              </div>
+              <button type="submit" id="submitButton" class="btn btn-default">Submit</button>
+            </form>
+          </div>
+        </div>
+    
+
+
+
+
+        <script src="./js/nuovoEvento.js"></script>
+</body>
+</html>

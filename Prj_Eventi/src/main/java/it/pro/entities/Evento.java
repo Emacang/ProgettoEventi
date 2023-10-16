@@ -19,11 +19,12 @@ public class Evento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int eventoID;
 	
+	private String nomeEvento;
 	private String tipologia;
 	private String caratteristiche;
 	private String descrizione;
 	private String luogoEvento;
-	private boolean disponibilita;
+	private String disponibilita;
 	private LocalDate dataEvento;
 	private String locandina;
 	private String banner;
@@ -39,6 +40,23 @@ public class Evento {
 
 	public void setEventoID(int eventoID) {
 		this.eventoID = eventoID;
+	}
+	
+
+	public String getNomeEvento() {
+		return nomeEvento;
+	}
+
+	public void setNomeEvento(String nomeEvento) {
+		this.nomeEvento = nomeEvento;
+	}
+
+	public String getDisponibilita() {
+		return disponibilita;
+	}
+
+	public void setDisponibilita(String disponibilita) {
+		this.disponibilita = disponibilita;
 	}
 
 	public String getTipologia() {
@@ -73,13 +91,6 @@ public class Evento {
 		this.luogoEvento = luogoEvento;
 	}
 
-	public boolean isDisponibilita() {
-		return disponibilita;
-	}
-
-	public void setDisponibilita(boolean disponibilita) {
-		this.disponibilita = disponibilita;
-	}
 
 	public LocalDate getDataEvento() {
 		return dataEvento;
