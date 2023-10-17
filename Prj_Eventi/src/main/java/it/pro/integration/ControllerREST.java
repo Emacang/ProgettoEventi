@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.pro.dto.LoginDTO;
 import it.pro.entities.Evento;
+import it.pro.entities.Prenotazioni;
 import it.pro.entities.Utente;
 import it.pro.response.LoginResponse;
 import it.pro.services.EventoService;
+import it.pro.services.PrenotazioniService;
 import it.pro.services.UtenteService;
 
 @RestController
@@ -28,6 +30,9 @@ public class ControllerREST {
 	
 	@Autowired
 	private UtenteService utenteService;
+	
+	@Autowired
+	private PrenotazioniService prenotazioniService;
 	
 	@GetMapping("evento")
 	List<Evento> getEvento(){
@@ -80,7 +85,36 @@ public class ControllerREST {
 	}
 	
 	
+	@GetMapping("prenotazioni")
+	List<Prenotazioni> getPrenotazioni(){
+		return prenotazioniService.getAll();
+	}
 	
+	@GetMapping("prenotazioni/{prenotazioniId}")
+	Prenotazioni getPrenotazioni(@PathVariable int prenotazioniId) {
+//		if(eventoService.getEventoById(eventoID)!=null) {
+			return prenotazioniService.getPrenotazioniById(prenotazioniId);
+//		} return new Evento();
+	}
+	
+	@PostMapping("prenotazioni")
+	Prenotazioni addPrenotazioni(@RequestBody Prenotazioni p) {
+		Prenotazioni pEsiste = prenotazioniService.getByPrenotazioni(p);
+		if(pEsiste == null) {
+			return prenotazioniService.add(p);
+			
+		}else {
+			return new Prenotazioni();
+		}
+	
+	}
+	
+	@GetMapping("prenotazioni/utente/{utenteID}")
+	List<Prenotazioni> getPrenotazioniById(@PathVariable String utenteID) {
+//		if(eventoService.getEventoById(eventoID)!=null) {
+			return prenotazioniService.getPrenotazioniByUtenteId(utenteID);
+//		} return new Evento();
+	}
 	
 	
 

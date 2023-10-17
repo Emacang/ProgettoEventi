@@ -41,20 +41,67 @@ function caricaEventi(){
         )}
 )}
 
-function inserPrenotazione(evento) {
-    let prenotazioni = JSON.parse(localStorage.getItem('prenotazioni')) || [];
+function inserPrenotazione(eventoID) {
+
+    
+
     if(localStorage.getItem("utente") === null){
-        mostraAlert('Devi prima accedere', 'danger');
-    }
-    else if (!prenotazioni.includes(evento)) {
-        prenotazioni.push(evento);
-        localStorage.setItem('prenotazioni', JSON.stringify(prenotazioni));
-        mostraAlert('Prenotazione effettuata con successo');
+                mostraAlert('Devi prima accedere', 'danger');
+
     }else{
-        mostraAlert('Prenotazione già effettuata in precedenza', 'danger');
+
+        let user = JSON.parse(localStorage.getItem('utente'));
+        let userid = user.userID;
+
+        let nuovaPrenotazione = {
+            "eventoID": eventoID,
+            "userID": userid
+        }
+
+    let URL = `http://127.0.0.1:9015/api/prenotazioni`;
+
+    fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(nuovaPrenotazione)
+        
+    })
+        .then(response => {
+            // statusCode = response.status; // salvo lo status della response
+            return response.json(); // restituisco il json convertito
+        })
+        .then(prenotazioni => {
+            console.log(prenotazioni);
+            if(prenotazioni.prenotazioniId == 0){
+                mostraAlert('Prenotazione già effettuata in precedenza', 'danger')
+            }else{
+                mostraAlert('Prenotazione effettuata con successo');
+            }
+
+        });
+
     }
     
+    
+
 }
+
+// function inserPrenotazione(evento) {
+//     let prenotazioni = JSON.parse(localStorage.getItem('prenotazioni')) || [];
+//     if(localStorage.getItem("utente") === null){
+//         mostraAlert('Devi prima accedere', 'danger');
+//     }
+//     else if (!prenotazioni.includes(evento)) {
+//         prenotazioni.push(evento);
+//         localStorage.setItem('prenotazioni', JSON.stringify(prenotazioni));
+//         mostraAlert('Prenotazione effettuata con successo');
+//     }else{
+//         mostraAlert('Prenotazione già effettuata in precedenza', 'danger');
+//     }
+    
+// }
 
 function mostraAlert(message, type = 'success') {
     let alertDiv = document.createElement('div');
