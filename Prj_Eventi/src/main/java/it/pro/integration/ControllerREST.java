@@ -20,7 +20,7 @@ import it.pro.services.UtenteService;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class ControllerREST {
 	
 	@Autowired
@@ -34,11 +34,11 @@ public class ControllerREST {
 		return eventoService.getAll();
 	}
 	
-	@GetMapping("evento/{id}")
+	@GetMapping("evento/{eventoID}")
 	Evento getEventoById(@PathVariable int eventoID) {
-		if(eventoService.getEventoById(eventoID)!=null) {
+//		if(eventoService.getEventoById(eventoID)!=null) {
 			return eventoService.getEventoById(eventoID);
-		} return new Evento();
+//		} return new Evento();
 	}
 	
 	@GetMapping("utente")
@@ -46,15 +46,18 @@ public class ControllerREST {
 		return utenteService.getAll();
 	}
 	
-	@GetMapping("utente/{id}")
+	@GetMapping("utente/{UserID}")
 	Utente getUtenteById(@PathVariable String UserID) {
-		if(utenteService.getUtente(UserID)!=null) {
-			return utenteService.getUtente(UserID);
+		Utente u = utenteService.getUtente(UserID);
+		if(u!=null) {
+			return u;
 		} return new Utente();
 	}
 	
-	@PostMapping("evento/{id}")
-	Evento addEvento(@RequestBody Evento e) {
+	@PostMapping("evento/utente/{utenteID}")
+	Evento addEvento(@RequestBody Evento e, @PathVariable String utenteID) {
+	Utente u =	utenteService.getUtente(utenteID);
+	e.setUtente(u);
 		return eventoService.add(e);
 	}
 	

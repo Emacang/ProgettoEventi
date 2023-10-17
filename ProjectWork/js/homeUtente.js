@@ -33,7 +33,38 @@ function caricaEventi(){
                 listItem.appendChild(eventoDet);
                 listItem.appendChild(addButton);
                 listaEventi.appendChild(listItem);
+
+                addButton.addEventListener('click', function () {
+                    inserPrenotazione(evento.eventoID);
+                });
           }
         )}
 )}
+
+function inserPrenotazione(evento) {
+    let prenotazioni = JSON.parse(localStorage.getItem('prenotazioni')) || [];
+    if(localStorage.getItem("utente") === null){
+        mostraAlert('Devi prima accedere', 'danger');
+    }
+    else if (!prenotazioni.includes(evento)) {
+        prenotazioni.push(evento);
+        localStorage.setItem('prenotazioni', JSON.stringify(prenotazioni));
+        mostraAlert('Prenotazione effettuata con successo');
+    }else{
+        mostraAlert('Prenotazione già effettuata in precedenza', 'danger');
+    }
+    
+}
+
+function mostraAlert(message, type = 'success') {
+    let alertDiv = document.createElement('div');
+    alertDiv.classList.add('alert', `alert-${type}`,'sticky-bottom', 'text-center', 'bottom-0', 'end-0', 'm-3');
+    alertDiv.textContent = message;
+
+    document.body.appendChild(alertDiv);
+
+    setTimeout(function () {
+        alertDiv.remove();
+    }, 3000);
+}
         

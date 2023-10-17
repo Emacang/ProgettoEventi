@@ -1,6 +1,6 @@
-submitButton.getElementById("submitButton");
+let subB = document.getElementById("submitButton");
 
-submitButton.addEventListener('click', (e) => {
+subB.addEventListener('click', (e) => {
 	addEvento(e);
 });
 
@@ -8,11 +8,14 @@ function addEvento(e) {
 
     e.preventDefault();
 
-    let URL = "http://localhost:9015/api/evento";
+    let utenteID = "Amministratore";
+
+    let URL = `http://127.0.0.1:9015/api/evento/utente/${utenteID}`;
    
     
 
     let nuovoEvento = {
+        "nomeEvento": document.getElementById("inputNom").value,
         "tipologia": document.getElementById("inputTip").value,
         "caratteristiche": document.getElementById("inputCar").value,
         "descrizione": document.getElementById("inputDes").value,
@@ -39,7 +42,7 @@ function addEvento(e) {
             return response.json(); // restituisco il json convertito
         })
         .then(evento => {
-            console.log(nuovoEvento);
+            console.log(evento);
 
         });
 

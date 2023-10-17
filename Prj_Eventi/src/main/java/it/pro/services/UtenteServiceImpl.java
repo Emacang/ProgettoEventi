@@ -23,7 +23,7 @@ public class UtenteServiceImpl implements UtenteService {
 	@Override
 	public Utente getUtente(String UserID) {
 		// TODO Auto-generated method stub
-		return dao.getReferenceById(UserID);
+		return dao.findByUserID(UserID);
 	}
 
 	@Override
