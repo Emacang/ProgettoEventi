@@ -11,4 +11,9 @@ public interface PrenotazioniService {
 	Prenotazioni add(Prenotazioni p);
 	Prenotazioni getByPrenotazioni(Prenotazioni p);
 	List<Prenotazioni> getPrenotazioniByUtenteId(String utenteID);
+	
+//	Prenotazioni deletePrenotazione(int prenotazioneId);
+	
+	Prenotazioni eliminaPrenotazione(int prenotazioneId);
+	
 }

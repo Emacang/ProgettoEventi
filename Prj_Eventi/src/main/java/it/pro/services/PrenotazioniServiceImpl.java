@@ -1,6 +1,7 @@
 package it.pro.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,5 +54,29 @@ public class PrenotazioniServiceImpl implements PrenotazioniService {
 		// TODO Auto-generated method stub
 		return dao.getPrenotazioniByUserID(utenteID);
 	}
+
+	@Override
+	public Prenotazioni eliminaPrenotazione(int prenotazioneId) {
+		// TODO Auto-generated method stub
+		 Optional<Prenotazioni> prenotazioneOptional = dao.findById(prenotazioneId);
+
+	        if (prenotazioneOptional.isPresent()) {
+	            Prenotazioni prenotazione = prenotazioneOptional.get();
+	            dao.delete(prenotazione); // 
+	            return prenotazione; // 
+	        } else {
+	            
+	            throw new NoSuchElementException("Prenotazione non trovata con ID " + prenotazioneId);
+	            }
+	}
+	
+	
+//	@Override
+//	public Prenotazioni deletePrenotazione(int prenotazioneId) {
+//		// TODO Auto-generated method stub
+//		return dao.deleteById(prenotazioneId);
+//	}
+	
+	
 
 }
