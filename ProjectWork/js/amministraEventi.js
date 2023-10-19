@@ -5,7 +5,6 @@ function caricaEventi(){
     .then(response => response.json())
     .then(data =>{
         let gestione = document.querySelector('#gestione');
-
         data.forEach(evento => {
 
             // if(evento.disponibilita == "Disponibile"){
@@ -60,7 +59,26 @@ function caricaEventi(){
                 //     modificaEvento(evento.eventoID);
                 // })
           }
-        )}
+
+          
+
+
+        )
+        
+        let nuovoItem = document.createElement('div')
+        nuovoItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+        
+        let addBtn = document.createElement('a')
+        addBtn.classList.add('btn', 'btn-primary', 'btn-sm');
+        addBtn.href = `formEventoNuovo.html`
+        addBtn.textContent = 'Aggiungi Evento'
+
+        nuovoItem.appendChild(addBtn);
+        gestione.appendChild(nuovoItem);
+    
+    }
+
+        
 )}
 
 // function redirecta(){
