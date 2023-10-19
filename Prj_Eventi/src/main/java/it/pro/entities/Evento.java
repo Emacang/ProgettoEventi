@@ -26,6 +26,7 @@ public class Evento {
 	private String caratteristiche;
 	private String descrizione;
 	private String luogoEvento;
+	private String indirizzo;
 	private String disponibilita;
 	private LocalDate dataEvento;
 	private String locandina;
@@ -33,7 +34,7 @@ public class Evento {
 	private String logo;
 	
     @JoinColumn(name = "UserID")
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Utente utente;
 
 	public int getEventoID() {
@@ -96,6 +97,14 @@ public class Evento {
 
 	public LocalDate getDataEvento() {
 		return dataEvento;
+	}
+
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
 	}
 
 	public void setDataEvento(LocalDate dataEvento) {

@@ -54,6 +54,11 @@ public class PrenotazioniServiceImpl implements PrenotazioniService {
 		// TODO Auto-generated method stub
 		return dao.getPrenotazioniByUserID(utenteID);
 	}
+	
+	public List<Prenotazioni> getPrenotazioniByEventoId(int eventoID) {
+		// TODO Auto-generated method stub
+		return dao.getPrenotazioniByEventoID(eventoID);
+	}
 
 	@Override
 	public Prenotazioni eliminaPrenotazione(int prenotazioneId) {
@@ -66,7 +71,7 @@ public class PrenotazioniServiceImpl implements PrenotazioniService {
 	            return prenotazione; // 
 	        } else {
 	            
-	            throw new NoSuchElementException("Prenotazione non trovata con ID " + prenotazioneId);
+	            return new Prenotazioni();
 	            }
 	}
 	

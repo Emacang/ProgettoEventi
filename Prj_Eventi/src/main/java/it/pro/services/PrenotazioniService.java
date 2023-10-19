@@ -15,5 +15,6 @@ public interface PrenotazioniService {
 //	Prenotazioni deletePrenotazione(int prenotazioneId);
 	
 	Prenotazioni eliminaPrenotazione(int prenotazioneId);
+	List<Prenotazioni> getPrenotazioniByEventoId(int eventoID);
 	
 }

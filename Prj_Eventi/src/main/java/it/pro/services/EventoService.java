@@ -10,5 +10,6 @@ public interface EventoService {
 	Evento getEventoById(int eventoID);
 	Evento add(Evento e);
 	
-
+	Evento eliminaEvento(int eventoID);
+	Evento mod(Evento e);
 }

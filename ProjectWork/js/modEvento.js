@@ -1,20 +1,38 @@
-let subB = document.getElementById("submitButton");
+let modB = document.getElementById("modButton");
 
-subB.addEventListener('click', (e) => {
-	addEvento(e);
+modB.addEventListener('click', (e) => {
+	modificaEvento(e);
+    document.getElementById("inputNom").value = ''
+    document.getElementById("inputTip").value = ''
+    document.getElementById("inputCar").value = ''
+    document.getElementById("inputDes").value = ''
+    document.getElementById("inputLuo").value = ''
+    document.getElementById("inputIndi").value = ''
+    document.getElementById("inputDis").value = ''
+    document.getElementById("inputDat").value = ''
+    document.getElementById("inputLoc").value = ''
+    document.getElementById("inputBan").value = ''
+    document.getElementById("inputLog").value = ''
 });
 
-function addEvento(e) {
+    function modificaEvento(e){
 
-    e.preventDefault();
+        e.preventDefault();
+
+
+    let urlParams = new URLSearchParams(window.location.search);
+    let eventoId = urlParams.get('eventoID');
 
     let utenteID = "Amministratore";
 
     let URL = `http://127.0.0.1:9015/api/evento/utente/${utenteID}`;
+
+    
    
     
 
-    let nuovoEvento = {
+    let eventoMod = {
+        "eventoID" : eventoId,
         "nomeEvento": document.getElementById("inputNom").value,
         "tipologia": document.getElementById("inputTip").value,
         "caratteristiche": document.getElementById("inputCar").value,
@@ -25,26 +43,25 @@ function addEvento(e) {
         "dataEvento": document.getElementById("inputDat").value,
         "locandina": document.getElementById("inputLoc").value,
         "banner": document.getElementById("inputBan").value,
-        "logo": document.getElementById("inputLog").value
-
+        "logo": document.getElementById("inputLog").value,
     }
 
 
     fetch(URL, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(nuovoEvento)
+        body: JSON.stringify(eventoMod)
         
     })
         .then(response => {
             statusCode = response.status; // salvo lo status della response
             return response.json(); // restituisco il json convertito
         })
-        .then(evento => {
-            console.log(evento);
+        .then(e => {
+            console.log(e);
 
         });
-
-}
+   
+    }

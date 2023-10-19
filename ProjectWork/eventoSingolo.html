@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="./css/eventoSingolo.css">
     <title>Evento</title>
 </head>
@@ -83,6 +84,8 @@
               </div> -->
         </div>
     </div>
+
+    <!-- <div id="map"></div> -->
 
     <footer class="page-footer font-small indigo mt-auto h-100">
     
@@ -167,6 +170,7 @@
 
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
         
         document.addEventListener('DOMContentLoaded', function() {
@@ -208,9 +212,28 @@
                         det.classList.add('stile-det')
                         det.textContent = 'Dettagli Evento';
 
+                        function formatDataItaliana(dataString) {
+                        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                        const dateAmericana = new Date(dataString);
+                        let dataIta = dateAmericana.toLocaleDateString('it-IT', options);
+
+                        dataIta = dataIta.replace(/(?:^|\s)\S/g, function(a) {
+                        return a.toUpperCase();
+                        });
+
+                        return dataIta
+                        }
+
+                        let dataAmericana = evento.dataEvento;
+                        let dataIta = formatDataItaliana(dataAmericana);
+                        // let dataD = new Date(dataAmericana)
+                        // const giorno = dataD.getDate().toString().padStart(2, '0');
+                        // const mese = (dataD.getMonth() + 1).toString().padStart(2, '0');
+                        // const anno = dataD.getFullYear();
+                        // let dataIta = `${giorno}-${mese}-${anno}`
                         let data = document.createElement('p')
                         data.classList.add('dettaglioEvento', 'd-flex', 'justify-content-between')
-                        data.innerHTML = `<span>Data: </span><span>${evento.dataEvento}</span>`
+                        data.innerHTML = `<span>Data: </span><span>${dataIta}</span>`
             
                         
                         let cate = document.createElement('p')
@@ -220,11 +243,15 @@
                         tipo.classList.add('dettaglioEvento', 'd-flex', 'justify-content-between')
                         tipo.innerHTML = `<span>Tipologia: </span><span>${evento.tipologia}</span>`
                         let luogo = document.createElement('p')
-                        luogo.classList.add('dettaglioEvento', 'd-flex', 'justify-content-between')
+                        luogo.classList.add('dettaglioEventoLuogo', 'd-flex', 'justify-content-between')
                         luogo.innerHTML = `<span>Luogo: </span><span>${evento.luogoEvento}</span>`
                         let disp = document.createElement('p')
                         disp.classList.add('dettaglioEvento', 'd-flex', 'justify-content-between')
                         disp.innerHTML = `<span>Disponibilità: </span><span>${evento.disponibilita}</span>`
+
+                        let divMap = document.createElement('div');
+                        divMap.classList.add('d-flex')
+                        divMap.setAttribute('id', 'map');
 
 
                         item.appendChild(image)
@@ -234,8 +261,9 @@
                         itemDet.appendChild(data)
                         itemDet.appendChild(cate)
                         itemDet.appendChild(tipo)
-                        itemDet.appendChild(luogo)
                         itemDet.appendChild(disp)
+                        itemDet.appendChild(luogo)
+                        itemDet.appendChild(divMap)
                         dettagliEvento.appendChild(item)
                         dettagliEvento.appendChild(divNome)
                         dettagliEvento.appendChild(itemDesc)
@@ -263,7 +291,28 @@
                         // listItem.appendChild(eventoDet);
                         // listItem.appendChild(addButton);
                         // dettagliEvento.appendChild(listItem);
-                    }
+
+                        let map = L.map('map').setView([41.902, 12.49], 6);
+
+                        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                          maxZoom: 19,
+                          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                        }).addTo(map);
+
+            
+
+                        fetch('https://geocode.maps.co/search?q='+evento.indirizzo)
+                          .then(response => response.json())
+                          .then(data => {
+                            console.log(data)
+          
+                            let lat = data[0].lat;
+                            let lon = data[0].lon;
+          
+                            var marker = L.marker([lat, lon]).addTo(map);
+
+                          })
+                              }
               })
             })
           }

@@ -77,7 +77,26 @@ function caricaPrenotazioni(){
     .then(data =>{
 
 
-        mostraEventiPrenotati(data);
+        if(data.length === 0){
+
+            let vuoto = document.createElement('div');
+                vuoto.classList.add('text-center', 'mb-4');
+
+                let vuotoHtml = 
+                `
+                            <div class="card h-75 p-0 text-center mt-5" style="border-color: black;">
+                            Non sono presenti prenotazioni all'attivo
+                            </div>
+                         `
+                     ;
+
+                     vuoto.innerHTML = vuotoHtml;
+                 prenotazioni.appendChild(vuoto);
+            
+        }else{
+        mostraEventiPrenotati(data);}
+
+        
         // let listaPrenotazioni = document.querySelector('#prenotazioni');
 
         // data.forEach(evento => {
@@ -135,16 +154,15 @@ function caricaPrenotazioni(){
 
 function mostraEventiPrenotati(prenotazioni) {
     prenotazioni.forEach(prenotazione => {
-        // Ottieni l'ID dell'evento prenotato da ciascuna prenotazione
+        
         let eventoId = prenotazione.eventoID;
 
-        // Esegui una richiesta per ottenere i dettagli dell'evento
+        
         fetch(`http://localhost:9015/api/evento/${eventoId}`)
             .then(response => response.json())
             .then(data => {
-                // Data conterrà i dettagli dell'evento
-                // Ora puoi creare elementi HTML per mostrare l'evento
-                mostraDettagliEvento(data);
+                
+                mostraDettagliEvento(data, prenotazione);
             })
             .catch(error => {
                 console.error('Errore nella richiesta dei dettagli dell\'evento:', error);
@@ -152,7 +170,7 @@ function mostraEventiPrenotati(prenotazioni) {
     });
 }
 
-function mostraDettagliEvento(evento) {
+function mostraDettagliEvento(evento, prenotazione) {
 
     let listaPrenotazioni = document.querySelector('#prenotazioni');
 
@@ -165,7 +183,7 @@ function mostraDettagliEvento(evento) {
                               <img class="card-img-top w-25 m-5 mx-auto" src="${evento.locandina}" alt="Title">
                               <div class="card-body" style="background-color: #ff0000;">
                                 <h4 class="card-title" style="color: white;">${evento.nomeEvento}</h4>
-                                <button class="btn btn-danger btn-sm" id="btnCancella${evento.eventoID}"> Cancella </button>
+                                <button class="btn btn-danger btn-sm" id="btnCancella${evento.eventoID}" data-id="${prenotazione.prenotazioniId}"> Cancella </button>
                               </div>              
                             </div>
                         `
@@ -174,12 +192,11 @@ function mostraDettagliEvento(evento) {
                     card.innerHTML = cardHtml;
                 listaPrenotazioni.appendChild(card);
 
-                const btnCancella = card.querySelector(`#btnCancella${evento.eventoID}`);
+                let btnCancella = card.querySelector(`#btnCancella${evento.eventoID}`);
                 
                 btnCancella.addEventListener('click', function() {
 
-                    const prenotazioneId = evento.eventoID;
-
+                    let prenotazioneId = btnCancella.getAttribute('data-id');
                     eliminaPrenotazione(prenotazioneId);
                     card.remove()
                 // const idDaCancellare = btnCancella.getAttribute('data-id');
@@ -190,21 +207,25 @@ function mostraDettagliEvento(evento) {
             });
 
             function eliminaPrenotazione(prenotazioneId) {
-                // Invia una richiesta di eliminazione al tuo backend
+                
                 fetch(`http://localhost:9015/api/prenotazioni/${prenotazioneId}`, {
                     method: 'DELETE'
                 })
                 .then(response => {
                     if (response.status === 200) {
-                        // Rimuovi la prenotazione dall'HTML (opzionale)
-                        const prenotazioneDaRimuovere = document.querySelector(`[data-id="${prenotazioneId}"]`);
+                        
+                        let prenotazioneDaRimuovere = document.querySelector(`[data-id="${prenotazioneId}"]`);
                         if (prenotazioneDaRimuovere) {
                             prenotazioneDaRimuovere.remove();
                         }
+
+                        mostraAlert('Prenotazione cancellata con successo');
                     } else if (response.status === 404) {
                         console.log('Prenotazione non trovata');
+                        mostraAlert('Prenotazione non trovata', 'danger');
                     } else {
                         console.log('Errore durante l\'eliminazione della prenotazione');
+                        mostraAlert('Errore durante l\'eliminazione della prenotazione', 'danger');
                     }
                 })
                 .catch(error => {
@@ -225,4 +246,16 @@ function mostraDettagliEvento(evento) {
     // `;
 
     // listaEventiPrenotati.appendChild(eventoElement);
+}
+
+function mostraAlert(message, type = 'success') {
+    let alertDiv = document.createElement('div');
+    alertDiv.classList.add('alert', `alert-${type}`,'sticky-bottom', 'text-center', 'bottom-0', 'end-0', 'm-3');
+    alertDiv.textContent = message;
+
+    document.body.appendChild(alertDiv);
+
+    setTimeout(function () {
+        alertDiv.remove();
+    }, 3000);
 }

@@ -14,4 +14,7 @@ public interface PrenotazioniDAO extends JpaRepository<Prenotazioni, Integer> {
 	
 	@Query("SELECT p from Prenotazioni p where p.UserID=?1")
 	List<Prenotazioni> getPrenotazioniByUserID(String UserID);
+	
+	@Query("SELECT p from Prenotazioni p where p.eventoID=?1")
+	List<Prenotazioni> getPrenotazioniByEventoID(int eventoID);
 }

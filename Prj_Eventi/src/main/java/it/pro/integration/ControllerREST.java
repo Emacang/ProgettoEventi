@@ -3,13 +3,13 @@ package it.pro.integration;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -128,6 +128,23 @@ public class ControllerREST {
 	@DeleteMapping("prenotazioni/{prenotazioneId}")
 	Prenotazioni eliminaPrenotazione(@PathVariable int prenotazioneId) {
 	        return prenotazioniService.eliminaPrenotazione(prenotazioneId);
+	}
+	
+	@DeleteMapping("evento/{eventoID}")
+	Evento eliminaEvento(@PathVariable int eventoID) {
+	        return eventoService.eliminaEvento(eventoID);
+	}
+	
+	@PutMapping("evento/utente/{utenteID}")
+	Evento modEvento(@RequestBody Evento e, @PathVariable String utenteID) {
+		Utente u =	utenteService.getUtente(utenteID);
+		e.setUtente(u);
+		return eventoService.mod(e);
+	}
+	
+	@PatchMapping("evento")
+	Evento modEvento2(@RequestBody Evento e) {
+		return eventoService.mod(e);
 	}
 	
 	
