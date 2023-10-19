@@ -71,6 +71,10 @@ document.addEventListener('DOMContentLoaded', caricaPrenotazioni);
 let user = JSON.parse(localStorage.getItem("utente"));
 let idUtente = user.userID;
 
+let nomeUtente = `${user.nome} ${user.cognome}`
+let dropdown = document.querySelector('#dropdown')
+dropdown.innerHTML = nomeUtente
+
 function caricaPrenotazioni(){
     fetch(`http://localhost:9015/api/prenotazioni/utente/${idUtente}`)
     .then(response => response.json())
@@ -213,10 +217,13 @@ function mostraDettagliEvento(evento, prenotazione) {
                 })
                 .then(response => {
                     if (response.status === 200) {
+
+                        location.reload();
                         
                         let prenotazioneDaRimuovere = document.querySelector(`[data-id="${prenotazioneId}"]`);
                         if (prenotazioneDaRimuovere) {
                             prenotazioneDaRimuovere.remove();
+                            
                         }
 
                         mostraAlert('Prenotazione cancellata con successo');

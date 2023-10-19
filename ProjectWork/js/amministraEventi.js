@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', caricaEventi);
 
+let user = JSON.parse(localStorage.getItem("utente"));
+let nomeUtente = `${user.nome} ${user.cognome}`
+
+let dropdown = document.querySelector('#dropdown')
+dropdown.innerHTML = nomeUtente
+
 function caricaEventi(){
     fetch('http://localhost:9015/api/evento')
     .then(response => response.json())

@@ -25,7 +25,7 @@ modB.addEventListener('click', (e) => {
 
     let utenteID = "Amministratore";
 
-    let URL = `http://127.0.0.1:9015/api/evento/utente/${utenteID}`;
+    let URL = `http://localhost:9015/api/evento/utente/${utenteID}`;
 
     
    

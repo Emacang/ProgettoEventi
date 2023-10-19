@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', caricaEventi);
-document.addEventListener('DOMContentLoaded', calendario)
+document.addEventListener('DOMContentLoaded', calendario);
+
+let user = JSON.parse(localStorage.getItem("utente"));
+          let nomeUtente = `${user.nome} ${user.cognome}`
+
+          let dropdown = document.querySelector('#dropdown')
+              dropdown.innerHTML = nomeUtente
 
 function caricaEventi(){
     fetch('http://localhost:9015/api/evento')
@@ -163,7 +169,7 @@ function inserPrenotazione(eventoID) {
             "userID": userid
         }
 
-    let URL = `http://127.0.0.1:9015/api/prenotazioni`;
+    let URL = `http://localhost:9015/api/prenotazioni`;
 
     fetch(URL, {
         method: 'POST',

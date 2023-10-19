@@ -18,7 +18,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary ">
     
-        <div class="container">
+        <div class="container " >
           <a class="navbar-brand" href="#"><img src="./img/logo pokemon.svg" alt="Homepage" height="50rem"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,8 +42,17 @@
                 </li>
               </ul>
               <ul class="navbar-nav ">
-                <a class="nav-link" ><button type="button" id="btnLogOut"> LogOut</button></a>
-                <!-- <button type="button" class="btn btn-dark">Sign up!</button> -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdown">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="homeUtente.html">Home</a></li>
+                    <li><a class="dropdown-item" href="prenotazioni.html">Le mie prenotazioni</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#"><a class="nav-link" ><button class="btn btn-secondary" type="button" id="btnLogOut"> Logout</button></a></a></li>
+                  </ul>
+                
                   </ul>
                 </li>
               </ul>
@@ -131,7 +140,7 @@
       <footer class="page-footer font-small indigo mt-auto h-100">
     
         <div class="container">
-          <img class="bottone" src="./img/bottone.png">
+          
           <div class="row text-lg-left">
       
             <div class="col-lg-3 mx-auto ">

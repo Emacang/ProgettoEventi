@@ -35,7 +35,16 @@
                 </li>
               </ul>
               <ul class="navbar-nav ">
-                <a class="nav-link" ><button type="button" id="btnLogOut"> LogOut</button></a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdown">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="homeUtente.html">Home</a></li>
+                    <li><a class="dropdown-item" href="prenotazioni.html">Le mie prenotazioni</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#"><a class="nav-link" ><button class="btn btn-secondary" type="button" id="btnLogOut"> Logout</button></a></a></li>
+                  </ul>
                 
                   </ul>
                 </li>
@@ -176,6 +185,12 @@
         document.addEventListener('DOMContentLoaded', function() {
           let urlParams = new URLSearchParams(window.location.search);
           let eventoId = urlParams.get('eventoID');
+
+          let user = JSON.parse(localStorage.getItem("utente"));
+          let nomeUtente = `${user.nome} ${user.cognome}`
+
+          let dropdown = document.querySelector('#dropdown')
+              dropdown.innerHTML = nomeUtente
           
             fetch('http://localhost:9015/api/evento')
               .then(response => response.json())
@@ -186,9 +201,8 @@
                     if(eventoId == evento.eventoID){
 
                         let intestazione = document.querySelector('#intestazione');
-
                         intestazione.innerHTML = evento.nomeEvento;
-                        
+
                         let dettagliEvento = document.querySelector('#dettagli-evento');
 
                         let item = document.createElement('div');
