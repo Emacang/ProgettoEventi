@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', caricaEventi);
+document.addEventListener('DOMContentLoaded', calendario)
 
 function caricaEventi(){
     fetch('http://localhost:9015/api/evento')
@@ -37,6 +38,110 @@ function caricaEventi(){
                 addButton.addEventListener('click', function () {
                     inserPrenotazione(evento.eventoID);
                 });
+          }
+        )}
+)}
+
+function calendario(){
+    fetch('http://localhost:9015/api/evento')
+    .then(response => response.json())
+    .then(data =>{
+        let listPast = document.querySelector('#listPast');
+        let listFuture = document.querySelector('#listFuture')
+
+        data.forEach(evento => {
+
+            // if(evento.disponibilita == "Disponibile"){
+                let oggi = new Date().getTime();
+                let dataUtile = new Date(evento.dataEvento).getTime();
+
+                if(dataUtile > oggi){
+
+                    let listaCalendarioItemFuturo = document.createElement('div')
+                    
+
+            let listCalendarioItem = document.createElement('div');
+            listCalendarioItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+                
+            let eventoDet = document.createElement('div');
+            eventoDet.classList.add('d-flex', 'align-items-center');
+
+            let name = document.createElement('a');
+            name.href = `eventoSingolo.html?eventoID=${evento.eventoID}`
+            name.innerHTML = evento.nomeEvento.toUpperCase();
+
+                function formatDataItaliana(dataString) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const dateAmericana = new Date(dataString);
+                let dataIta = dateAmericana.toLocaleDateString('it-IT', options);
+
+                dataIta = dataIta.replace(/(?:^|\s)\S/g, function(a) {
+                return a.toUpperCase();
+                });
+
+                return dataIta
+                }
+
+                let dataAmericana = evento.dataEvento;
+                let dataIta = formatDataItaliana(dataAmericana);
+
+                
+                
+
+                let data = document.createElement('p')
+                        data.classList.add('d-flex', 'justify-content-between')
+                        data.innerHTML = `<span>${dataIta}</span>`
+
+                
+                eventoDet.appendChild(data);
+                eventoDet.appendChild(name);
+                listCalendarioItem.appendChild(eventoDet);
+                listaCalendarioItemFuturo.appendChild(listCalendarioItem)
+                listFuture.appendChild(listaCalendarioItemFuturo);
+
+            }else{
+                let listaCalendarioItemPassato = document.createElement('div')
+                    
+
+            let listCalendarioItem = document.createElement('div');
+            listCalendarioItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+                
+            let eventoDet = document.createElement('div');
+            eventoDet.classList.add('d-flex', 'align-items-center');
+
+            let name = document.createElement('a');
+            name.href = `eventoSingolo.html?eventoID=${evento.eventoID}`
+            name.innerHTML = evento.nomeEvento.toUpperCase();
+
+                function formatDataItaliana(dataString) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const dateAmericana = new Date(dataString);
+                let dataIta = dateAmericana.toLocaleDateString('it-IT', options);
+
+                dataIta = dataIta.replace(/(?:^|\s)\S/g, function(a) {
+                return a.toUpperCase();
+                });
+
+                return dataIta
+                }
+
+                let dataAmericana = evento.dataEvento;
+                let dataIta = formatDataItaliana(dataAmericana);
+
+                
+                
+
+                let data = document.createElement('p')
+                        data.classList.add('d-flex', 'justify-content-between')
+                        data.innerHTML = `<span>${dataIta}</span>`
+
+                
+                eventoDet.appendChild(data);
+                eventoDet.appendChild(name);
+                listCalendarioItem.appendChild(eventoDet);
+                listaCalendarioItemPassato.appendChild(listCalendarioItem)
+                listPast.appendChild(listaCalendarioItemPassato);
+            }
           }
         )}
 )}

@@ -292,11 +292,11 @@
                         // listItem.appendChild(addButton);
                         // dettagliEvento.appendChild(listItem);
 
-                        let map = L.map('map').setView([41.902, 12.49], 6);
+                        let map = L.map('map');
 
                         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                           maxZoom: 19,
-                          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                          
                         }).addTo(map);
 
             
@@ -308,8 +308,17 @@
           
                             let lat = data[0].lat;
                             let lon = data[0].lon;
+
+                            map.setView([lat, lon], 17);
+
+                            // let customIcon = L.icon({
+                            //    iconUrl: './img/map.png', // Inserisci il percorso al tuo file di icona
+                            //    iconSize: [40, 40], // Imposta la dimensione dell'icona
+                            //    iconAnchor: [20, 40], // Imposta l'ancoraggio dell'icona
+                            //    popupAnchor: [0, -40] // Imposta l'ancoraggio del popup
+                            //  });
           
-                            var marker = L.marker([lat, lon]).addTo(map);
+                            let marker = L.marker([lat, lon]).addTo(map);
 
                           })
                               }
