@@ -84,7 +84,7 @@ function caricaPrenotazioni(){
         if(data.length === 0){
 
             let vuoto = document.createElement('div');
-                vuoto.classList.add('text-center', 'mb-4');
+                vuoto.classList.add('text-center', 'mb-5');
 
                 let vuotoHtml = 
                 `
@@ -176,33 +176,101 @@ function mostraEventiPrenotati(prenotazioni) {
 
 function mostraDettagliEvento(evento, prenotazione) {
 
-    let listaPrenotazioni = document.querySelector('#prenotazioni');
+    function formatDataItaliana(dataString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const dateAmericana = new Date(dataString);
+        let dataIta = dateAmericana.toLocaleDateString('it-IT', options);
 
-    let card = document.createElement('div');
-                card.classList.add('col-md-4', 'mb-4');
+        dataIta = dataIta.replace(/(?:^|\s)\S/g, function(a) {
+        return a.toUpperCase();
+        });
 
-                let cardHtml = 
-                `
-                            <div class="card h-100 p-0 text-center mt-5" style="border-color: black;">
-                              <img class="card-img-top w-25 m-5 mx-auto" src="${evento.locandina}" alt="Title">
-                              <div class="card-body" style="background-color: #ff0000;">
-                                <h4 class="card-title" style="color: white;">${evento.nomeEvento}</h4>
-                                <button class="btn btn-danger btn-sm" id="btnCancella${evento.eventoID}" data-id="${prenotazione.prenotazioniId}"> Cancella </button>
-                              </div>              
-                            </div>
-                        `
-                    ;
+        return dataIta
+        }
 
-                    card.innerHTML = cardHtml;
-                listaPrenotazioni.appendChild(card);
+        let dataAmericana = evento.dataEvento;
+        let dataIta = formatDataItaliana(dataAmericana);
 
-                let btnCancella = card.querySelector(`#btnCancella${evento.eventoID}`);
+       
+        let dataD = new Date(dataAmericana)
+        const giorno = dataD.getDate().toString().padStart(2, '0');
+        const nomeMese = dataD.toLocaleString('it-IT', { month: 'short' }).toUpperCase();
+
+            let listaPrenotazioni = document.querySelector('#prenotazioni');
+
+            let divCol = document.createElement('div')
+            divCol.classList.add('col-lg-4');
+
+            let cardEventoFu = document.createElement('div');
+            cardEventoFu.classList.add('card', 'evento');
+
+            let imgPoster = document.createElement('img');
+            imgPoster.classList.add('card-img-top');
+            imgPoster.src = evento.poster;
+
+            let cardBody = document.createElement('div');
+            cardBody.classList.add('card-body')
+
+            let divCardCon = document.createElement('div');
+            divCardCon.classList.add('card-content');
+
+            let cardTit = document.createElement('h5');
+            cardTit.classList.add('card-title', 'text-black', 'd-flex', 'justify-content-between')
+            cardTit.innerHTML = evento.nomeEvento;
+
+            let pCardText = document.createElement('p');
+            pCardText.classList.add('card-text');
+
+            let spanF1 = document.createElement('span');
+            let spanF2 = document.createElement('span');
+            spanF2.classList.add('data-futuri');
+            spanF2.innerHTML = dataIta
+
+            let btnCancella = document.createElement('button')
+            btnCancella.classList.add('btn', 'btn-warning', 'btnCanc');
+            btnCancella.setAttribute('id', `btnCancella${evento.eventoID}`);
+            btnCancella.setAttribute('data-id', `${prenotazione.prenotazioniId}`)
+            btnCancella.innerHTML = 'Disdici'
+
+
+            spanF1.appendChild(btnCancella)
+            pCardText.appendChild(spanF1)
+            pCardText.appendChild(spanF2)
+            divCardCon.appendChild(cardTit);
+            divCardCon.appendChild(pCardText)
+            cardBody.appendChild(divCardCon);
+            cardEventoFu.appendChild(imgPoster);
+            cardEventoFu.appendChild(cardBody);
+            divCol.appendChild(cardEventoFu);
+            listaPrenotazioni.appendChild(divCol)
+
+    // let card = document.createElement('div');
+    //             card.classList.add('col-md-4', 'mb-4');
+
+    //             let cardHtml = 
+    //             `
+    //                         <div class="card h-100 p-0 text-center mt-5" style="border-color: black;">
+    //                           <img class="card-img-top w-25 m-5 mx-auto" src="${evento.poster}" alt="Title">
+    //                           <div class="card-body" style="background-color: #ff0000;">
+    //                             <h4 class="card-title" style="color: white;">${evento.nomeEvento}</h4>
+    //                             <button class="btn btn-danger btn-sm" id="btnCancella${evento.eventoID}" data-id="${prenotazione.prenotazioniId}"> Cancella </button>
+    //                           </div>              
+    //                         </div>
+    //                     `
+    //                 ;
+
+    //                 card.innerHTML = cardHtml;
+    //             listaPrenotazioni.appendChild(card);
+
+    //             let btnCancella = card.querySelector(`#btnCancella${evento.eventoID}`);
                 
                 btnCancella.addEventListener('click', function() {
 
                     let prenotazioneId = btnCancella.getAttribute('data-id');
                     eliminaPrenotazione(prenotazioneId);
                     card.remove()
+
+
                 // const idDaCancellare = btnCancella.getAttribute('data-id');
                 // prenotazioni = prenotazioni.filter(id => id !== idDaCancellare);
                 // localStorage.removeItem('prenotazioni');
@@ -218,7 +286,9 @@ function mostraDettagliEvento(evento, prenotazione) {
                 .then(response => {
                     if (response.status === 200) {
 
-                        location.reload();
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
                         
                         let prenotazioneDaRimuovere = document.querySelector(`[data-id="${prenotazioneId}"]`);
                         if (prenotazioneDaRimuovere) {

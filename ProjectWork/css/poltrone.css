@@ -1,0 +1,59 @@
+.box{
+    background-image: url(/ProjectWork/img/poltrone.png);
+    height: 600px;
+    background-size: cover;
+    display: block;
+    
+}
+
+.virgolette{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 200px;
+    color: white;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    
+}
+
+.frase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    line-height: 52px;
+    color: white;
+    text-align: center;
+    padding: 0px 25%;
+}
+
+
+.di{
+    font-family: 'Cormorant Garamond', serif;
+    font-size:24px;
+    line-height:100px;
+    font-weight:bold;
+    font-style:normal;
+    text-transform:none;
+    text-decoration:none;
+    color: white;
+    text-align: center;
+}
+
+.libro{
+    
+	font-size:15px;
+	line-height:1px;
+	text-transform:none;
+	text-decoration:none;
+    color: white;
+    text-align: center;
+    
+}
+
+/* .navigation{
+    color: #a9a066;
+} */
+
+.swiper-button-next, .swiper-button-prev{
+
+    color: #a9a066;
+}

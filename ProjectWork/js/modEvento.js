@@ -13,6 +13,7 @@ modB.addEventListener('click', (e) => {
     document.getElementById("inputLoc").value = ''
     document.getElementById("inputBan").value = ''
     document.getElementById("inputLog").value = ''
+    document.getElementById("inputPos").value = ''
 });
 
     function modificaEvento(e){
@@ -44,6 +45,7 @@ modB.addEventListener('click', (e) => {
         "locandina": document.getElementById("inputLoc").value,
         "banner": document.getElementById("inputBan").value,
         "logo": document.getElementById("inputLog").value,
+        "poster": document.getElementById("inputPos").value
     }
 
 

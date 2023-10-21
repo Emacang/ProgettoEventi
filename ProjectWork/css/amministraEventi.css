@@ -1,0 +1,37 @@
+.evento{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.evento .card-body{
+    margin-top: -2rem;
+}
+
+
+.evento .card-body .card-content{
+    background-color: #fff;
+    padding: 0.5rem;  
+}
+
+#contenuti{
+    background-color: #212529;
+}
+
+ .data{
+    text-align: center;
+    padding-left: 20%;
+   
+}
+
+.data-futuri{
+    color:#000000;
+    font-size: 1rem;
+    text-align: center;
+    padding-left: 10%;
+   
+}
+
+.btn-warning .data-futuri{
+    justify-content: center;
+}

@@ -1,0 +1,100 @@
+section {
+    padding: 2rem 0;
+}
+
+section .section-title {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+#tabs{
+	background: #ffffff;
+    color: #ffffff;
+}
+#tabs h6.section-title{
+    color: #000000;
+}
+
+/* short end: flex grow(quanto un elemento deve crescere rispetto ai suoi fratelli), flex shrink(e' l'abilita'di un elemento flex di rimpicciolire se necessario) , flex basis(definisce una grandezza di default dell'elemento, es dargli una width)  
+gli stiamo dicendo di dividersi equamente lo stesso spazio*/
+
+.nav-fill{
+    border-bottom: 0;
+}
+
+#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #5f2525;
+    background-color: transparent;
+    border-color: transparent transparent #751b1b;
+    border-bottom: 4px solid !important;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+#tabs .nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #903838;
+    font-size: 1.2rem;
+}
+
+
+.evento{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.evento .card-body{
+    margin-top: -2rem;
+    
+}
+
+
+.evento .card-body .card-content{
+    background-color: #fff;
+    padding: 0.5rem;  
+}
+
+#contenuti{
+    background-color: #212529;
+}
+
+ .data{
+    text-align: center;
+    padding-left: 20%;
+   
+}
+
+.data-futuri{
+    color:#000000;
+    font-size: 1.4rem;
+    text-align: center;
+    padding-left: 40%;
+   
+}
+
+.btn-warning .data-futuri{
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+/* short end: flex grow(quanto un elemento deve crescere rispetto ai suoi fratelli), flex shrink(e' l'abilita'di un elemento flex di rimpicciolire se necessario) , flex basis(definisce una grandezza di default dell'elemento, es dargli una width)  
+gli stiamo dicendo di dividersi equamente lo stesso spazio*/
+@media screen and (min-width: 518px){
+    .nav-tabs .nav-item{
+        flex: 1; 
+    } 
+
+    .evento .card-body .card-content{
+        padding: 1rem;
+    }
+    
+}

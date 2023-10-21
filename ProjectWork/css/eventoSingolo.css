@@ -24,3 +24,16 @@
     height: 10rem;
     border-radius: 4px;
 }
+
+.btnpreno{
+    background-color: #a9a066;
+    border-radius: 0;
+    border-color: #a9a066;
+    color: #e1e1e1;
+  }
+  
+  .btnpreno:hover{
+    border: 1px solid #903838;
+    background-color: #903838;
+    color: white;
+  }

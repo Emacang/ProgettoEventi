@@ -1,0 +1,55 @@
+.btnCanc{
+    background-color: #a9a066;
+    border-radius: 0;
+    border-color: #a9a066;
+    color: #e1e1e1;
+  }
+  
+  .btnCanc:hover{
+    border: 1px solid #903838;
+    background-color: #903838;
+    color: white;
+  }
+
+
+.evento{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.evento .card-body{
+    margin-top: -2rem;
+}
+
+
+.evento .card-body .card-content{
+    background-color: #fff;
+    padding: 0.5rem;  
+}
+
+#contenuti{
+    background-color: #212529;
+}
+
+ .data{
+    text-align: center;
+    padding-left: 20%;
+   
+}
+
+.data-futuri{
+    color:#000000;
+    font-size: 1.4rem;
+    text-align: center;
+    padding-left: 30%;
+   
+}
+
+.btn-warning .data-futuri{
+    justify-content: center;
+}
+
+/* .alertCust{
+    background-color: #a9a066;
+} */

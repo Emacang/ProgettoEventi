@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
 let btnLogOut = document.querySelector("#btnLogOut");
 
-let userAdmin = JSON.parse(localStorage.getItem("utente"));
-          let nomeUtenteAdmin = `${userAdmin.nome} ${userAdmin.cognome}`
+// let userAdmin = JSON.parse(localStorage.getItem("utente"));
+//           let nomeUtenteAdmin = `${userAdmin.nome} ${userAdmin.cognome}`
 
-          let dropdownAdmin = document.querySelector('#dropdownAdmin')
-              dropdownAdmin.innerHTML = nomeUtenteAdmin
+//           let dropdownAdmin = document.querySelector('#dropdownAdmin')
+//               dropdownAdmin.innerHTML = nomeUtenteAdmin
 
 function logOut(){
     

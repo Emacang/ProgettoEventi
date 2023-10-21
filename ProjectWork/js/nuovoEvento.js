@@ -25,7 +25,8 @@ function addEvento(e) {
         "dataEvento": document.getElementById("inputDat").value,
         "locandina": document.getElementById("inputLoc").value,
         "banner": document.getElementById("inputBan").value,
-        "logo": document.getElementById("inputLog").value
+        "logo": document.getElementById("inputLog").value,
+        "poster": document.getElementById("inputPos").value
 
     }
 

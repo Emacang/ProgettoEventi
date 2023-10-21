@@ -32,6 +32,7 @@ public class Evento {
 	private String locandina;
 	private String banner;
 	private String logo;
+	private String poster;
 	
     @JoinColumn(name = "UserID")
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -142,5 +143,15 @@ public class Evento {
 	public void setLogo(String logo) {
 		this.logo = logo;
 	}
+
+	public String getPoster() {
+		return poster;
+	}
+
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+	
+	
 
 }
