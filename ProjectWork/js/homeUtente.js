@@ -2,6 +2,29 @@ document.addEventListener('DOMContentLoaded', caricaEventi);
 document.addEventListener('DOMContentLoaded', calendario);
 document.addEventListener('DOMContentLoaded', eventiFuturi);
 
+document.addEventListener('DOMContentLoaded', function(){
+
+    let user = JSON.parse(localStorage.getItem("utente"));
+    let tipoUtente = user.tipo;
+
+    if(localStorage.getItem("utente") === null){
+            window.location.href = "home.html"
+    }else if((tipoUtente == "A")){
+        window.location.href = "homeAdmin.html"
+    }
+});
+
+let btnLogOut = document.querySelector("#btnLogOut");
+
+function logOut(){
+
+    localStorage.removeItem("utente");
+    window.location.href = "home.html"
+
+}
+
+btnLogOut.addEventListener("click", logOut);
+
 let user = JSON.parse(localStorage.getItem("utente"));
           let nomeUtente = `${user.nome} ${user.cognome}`
 
@@ -15,38 +38,8 @@ function caricaEventi(){
         let listaEventi = document.querySelector('#listaEventi');
 
         data.forEach(evento => {
-
-            // if(evento.disponibilita == "Disponibile"){
-
-            // let listItem = document.createElement('div');
-            // listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
-                
-            // let eventoDet = document.createElement('div');
-            // eventoDet.classList.add('d-flex', 'align-items-center');
-                
-            // let image = document.createElement('img');
-            // image.src = evento.logo;
-            // image.classList.add('mr-3', 'img-fluid');
-
-            // let name = document.createElement('a');
-            // name.href = `eventoSingolo.html?eventoID=${evento.eventoID}`
-            // name.textContent = evento.nomeEvento.toUpperCase();
-                
-            // let addButton = document.createElement('button');
-            // addButton.classList.add('btn', 'btn-danger', 'btn-sm');
-            // addButton.textContent = 'Prenota';
-
-            //     eventoDet.appendChild(image);
-            //     eventoDet.appendChild(name);
-            //     listItem.appendChild(eventoDet);
-            //     listItem.appendChild(addButton);
-            //     listaEventi.appendChild(listItem);
-
-            //     addButton.addEventListener('click', function () {
-            //         inserPrenotazione(evento.eventoID);
-            //     });
-
-            function formatDataItaliana(dataString) {
+   
+          function formatDataItaliana(dataString) {
                 const options = { year: 'numeric', month: 'long', day: 'numeric' };
                 const dateAmericana = new Date(dataString);
                 let dataIta = dateAmericana.toLocaleDateString('it-IT', options);
@@ -57,9 +50,12 @@ function caricaEventi(){
 
                 return dataIta
                 }
+                let dataD = new Date (evento.dataEvento)
 
                 let dataAmericana = evento.dataEvento;
                 let dataIta = formatDataItaliana(dataAmericana);
+
+                if(dataD.getFullYear() != '2024'){
 
             let swiperSlide = document.createElement('div')
             swiperSlide.classList.add('swiper-slide');
@@ -109,7 +105,7 @@ function caricaEventi(){
             card.appendChild(imgC);
             card.appendChild(cardBody);
             swiperSlide.appendChild(card);
-            listaEventi.append(swiperSlide);
+            listaEventi.append(swiperSlide);}
 
           }
         )}
@@ -136,24 +132,13 @@ function calendario(){
 
         data.forEach(evento => {
 
-            // if(evento.disponibilita == "Disponibile"){
+            
                 let oggi = new Date().getTime();
                 let dataUtile = new Date(evento.dataEvento).getTime();
+                let dataD = new Date (evento.dataEvento)
 
                 if(dataUtile > oggi){
 
-            //         let listaCalendarioItemFuturo = document.createElement('div')
-                    
-
-            // let listCalendarioItem = document.createElement('div');
-            // listCalendarioItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
-                
-            // let eventoDet = document.createElement('div');
-            // eventoDet.classList.add('d-flex', 'align-items-center');
-
-            // let name = document.createElement('a');
-            // name.href = `eventoSingolo.html?eventoID=${evento.eventoID}`
-            // name.innerHTML = evento.nomeEvento.toUpperCase();
 
                 function formatDataItaliana(dataString) {
                 const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -175,20 +160,7 @@ function calendario(){
                         const giorno = dataD.getDate().toString().padStart(2, '0');
                         const nomeMese = dataD.toLocaleString('it-IT', { month: 'short' }).toUpperCase();;
 
-
-                
-                
-
-            //     let data = document.createElement('p')
-            //             data.classList.add('d-flex', 'justify-content-between')
-            //             data.innerHTML = `<span>${dataIta}</span>`
-
-                
-            //     eventoDet.appendChild(data);
-            //     eventoDet.appendChild(name);
-            //     listCalendarioItem.appendChild(eventoDet);
-            //     listaCalendarioItemFuturo.appendChild(listCalendarioItem)
-            //     listFuture.appendChild(listaCalendarioItemFuturo);
+            if(dataD.getFullYear() != '2024'){
 
             let divEvento = document.createElement('div');
             divEvento.classList.add('lEvento');
@@ -235,52 +207,9 @@ function calendario(){
             
             
             listFuture.appendChild(divEvento)
-            
+            }
 
             }else{
-
-            //     let listaCalendarioItemPassato = document.createElement('div')
-                    
-
-            // let listCalendarioItem = document.createElement('div');
-            // listCalendarioItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
-                
-            // let eventoDet = document.createElement('div');
-            // eventoDet.classList.add('d-flex', 'align-items-center');
-
-            // let name = document.createElement('a');
-            // name.href = `eventoSingolo.html?eventoID=${evento.eventoID}`
-            // name.innerHTML = evento.nomeEvento.toUpperCase();
-
-            //     function formatDataItaliana(dataString) {
-            //     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            //     const dateAmericana = new Date(dataString);
-            //     let dataIta = dateAmericana.toLocaleDateString('it-IT', options);
-
-            //     dataIta = dataIta.replace(/(?:^|\s)\S/g, function(a) {
-            //     return a.toUpperCase();
-            //     });
-
-            //     return dataIta
-            //     }
-
-            //     let dataAmericana = evento.dataEvento;
-            //     let dataIta = formatDataItaliana(dataAmericana);
-
-                
-                
-
-            //     let data = document.createElement('p')
-            //             data.classList.add('d-flex', 'justify-content-between')
-            //             data.innerHTML = `<span>${dataIta}</span>`
-
-                
-            //     eventoDet.appendChild(data);
-            //     eventoDet.appendChild(name);
-            //     listCalendarioItem.appendChild(eventoDet);
-            //     listaCalendarioItemPassato.appendChild(listCalendarioItem)
-            //     listPast.appendChild(listaCalendarioItemPassato);
-
 
             function formatDataItaliana(dataString) {
                 const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -364,11 +293,12 @@ function eventiFuturi(){
 
         data.forEach(evento => {
 
-            
+                let tipoEv = evento.tipologia;
                 let oggi = new Date().getTime();
                 let dataUtile = new Date(evento.dataEvento).getTime();
+                let dataD = new Date (evento.dataEvento)
 
-                if(dataUtile > oggi){
+                if(tipoEv = "Concerto" && tipoEv != "Cinema" && tipoEv != "Rassegna Letteraria" && dataD.getFullYear() == '2024'){
 
                 function formatDataItaliana(dataString) {
                 const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -437,7 +367,7 @@ function eventiFuturi(){
 
 
 
-            }else{
+            }else if(tipoEv = "Rassegna Letteraria" && tipoEv != "Cinema" && tipoEv != "Concerto" && dataD.getFullYear() == '2024'){
 
             function formatDataItaliana(dataString) {
                 const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -536,8 +466,8 @@ function inserPrenotazione(eventoID) {
         
     })
         .then(response => {
-            // statusCode = response.status; // salvo lo status della response
-            return response.json(); // restituisco il json convertito
+        
+            return response.json(); 
         })
         .then(prenotazioni => {
             console.log(prenotazioni);
@@ -554,21 +484,6 @@ function inserPrenotazione(eventoID) {
     
 
 }
-
-// function inserPrenotazione(evento) {
-//     let prenotazioni = JSON.parse(localStorage.getItem('prenotazioni')) || [];
-//     if(localStorage.getItem("utente") === null){
-//         mostraAlert('Devi prima accedere', 'danger');
-//     }
-//     else if (!prenotazioni.includes(evento)) {
-//         prenotazioni.push(evento);
-//         localStorage.setItem('prenotazioni', JSON.stringify(prenotazioni));
-//         mostraAlert('Prenotazione effettuata con successo');
-//     }else{
-//         mostraAlert('Prenotazione già effettuata in precedenza', 'danger');
-//     }
-    
-// }
 
 function mostraAlert(message, type = 'success') {
     let alertDiv = document.createElement('div');

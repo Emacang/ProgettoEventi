@@ -51,6 +51,11 @@ gli stiamo dicendo di dividersi equamente lo stesso spazio*/
     
 }
 
+.card-body{
+    box-shadow: 0px 20px 50px 0px rgba(169, 160, 102, 0.102);
+    
+}
+
 
 .evento .card-body .card-content{
     background-color: #fff;

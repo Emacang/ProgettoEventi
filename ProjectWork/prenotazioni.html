@@ -1,203 +1,177 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> 
-    <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/prenotazioni.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/footer.css">
+  <link rel="stylesheet" href="./css/prenotazioni.css">
 
-    <title>Le mie prenotazioni</title>
+  <title>Le mie prenotazioni</title>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary " id="return">
-    
-        <div class="container">
-          <a class="navbar-brand" href="#"><img src="" alt="Homepage" height="50rem"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Homepage</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
 
-              <ul class="navbar-nav justify-content-center flex-grow-1 ">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Event</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Shop</a>
-                </li>
-              </ul>
-              <ul class="navbar-nav ">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdown">
-                    Dropdown
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="homeUtente.html">Home</a></li>
-                    <li><a class="dropdown-item" href="prenotazioni.html">Le mie prenotazioni</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#"><a class="nav-link" ><button class="btn btn-secondary" type="button" id="btnLogOut"> Logout</button></a></a></li>
-                  </ul>
-                
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary " id="return">
+
+    <div class="container">
+      <img class="logo img-fluid" src="./img/Grandwiev_Event2.png"></img>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="logo img-fluid"
+              src="./img/Grandwiev_Event2.png"></img></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-      </nav>
- 
+        <div class="offcanvas-body">
 
-    <div class="container mt-5">
-        <div class="row" id="prenotazioni">
-
-            <!-- <div class="col-lg-12">
-                <img class="img-fluid" src="https://images6.alphacoders.com/129/1299426.jpg" alt="">
-            </div>
-
-            <div class="col-lg-12">
-                <img class="logo-titolo" src="https://www.pngkit.com/png/full/305-3057812_interstellar-image-interstellar-transparent.png" alt="">
-            </div>
-
-            <div class="col-lg-8">
-                <p>"Interstellar" è un epico film di fantascienza del 2014 diretto da Christopher Nolan. La trama del film è ambientata in un futuro distopico in cui la Terra sta morendo a causa della scarsità di risorse e dell'inarrestabile cambiamento climatico. Un gruppo di scienziati e astronauti intraprende una missione spaziale per cercare una nuova casa per l'umanità.
-
-                    Il protagonista, interpretato da Matthew McConaughey, è un ex pilota di stanza sulla Terra, Joseph Cooper, che si unisce a un gruppo di scienziati per attraversare un wormhole e raggiungere pianeti potenzialmente abitabili in un'altra galassia. La loro missione è cercare un nuovo mondo in cui l'umanità possa sopravvivere, poiché la Terra è ormai inospitale.
-                    
-                    Il film è noto per la sua attenzione ai dettagli scientifici e offre una rappresentazione straordinaria dell'astronomia e della fisica, in particolare per quanto riguarda i buchi neri, i wormhole e la relatività generale di Einstein. La trama affronta anche temi profondi, come l'amore, la speranza, la lealtà e la capacità umana di affrontare sfide incredibili.
-                    
-                    "Interstellar" è caratterizzato da effetti speciali straordinari, una colonna sonora eccezionale composta da Hans Zimmer e interpretazioni di alto livello da parte del cast, che include Anne Hathaway, Jessica Chastain e Michael Caine. Il film cattura l'immaginazione degli spettatori con la sua narrazione complessa e le sue spettacolari sequenze spaziali, mentre allo stesso tempo solleva domande profonde sulla natura dell'umanità e il nostro rapporto con l'universo.</p>
-            </div>
-
-            <div class="col-lg-4">
-                <p>project deteils
-                
-                </p>
-                <p class="d-flex justify-content-between"><span>data:</span> <span>12/10/23</span></p>
-                <p></p>
-                <hr>
-                <p>cinema</p>
-                <hr>
-                <p>teatro sancarlo</p>
-            </div> -->
-
-            <!-- <div id="dettagli-evento">
-        
-              </div> -->
-        </div>
-    </div>
-
-    <hr class="mt-5">
-
-    <footer class="mt-5">
-
-      <div class="container">
-        <div class="row">
-    
-          <div class="col-lg-3 mx-auto ">
-    
-            <img src="./img/mappa.jpg" >
-    
-          </div>
-          <div class="col-lg-3 mx-auto ">
-    
-            <h5 class="mb-4">Info</h5>
-            <ul class="list-unstyled  my-2  info">
-              <li>
-                <i class="fa-solid fa-location-dot my-3" style="color: #a9a066;"></i>Centro Direzionale, NA 535022, IT
-              </li>
-              
-              <li>
-                <i class="fa-solid fa-phone my-3" style="color: #a9a066;"></i><strong>Phone:</strong>+39 5589 55488 55
-              </li>
-              <li>
-                <i class="fa-solid fa-envelope my-3" style="color: #a9a066;"></i><strong>Email:</strong> grandview@gmail.com
-              </li>
-    
-            </ul>
-    
-          </div>
-    
-          <div class="col-lg-2 mx-auto ">
-    
-            <h6 class=" mb-3">Link Utili</h5>
-    
-              <ul class="list-unstyled fw-">
-                <li class="my-2">
-                  <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Home</p>
-                </li>
-                <li class="my-2">
-                  <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Eventi Disponibili</p>
-                </li>
-                <li class="my-2">
-                  <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Eventi Futuri</p>
-                </li>
-                <li class="my-2">
-                  <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Top 3</p>
-                </li>
-                <li class="my-2">
-                  <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Calendario</p>
-                </li>
-              </ul>
-    
-          </div>
-    
-          <div class="col-lg-3 mx-auto">
-    
-            <h6 class="mb-4">Social</h5>
-              <ul class="list-unstyled fw-">
-                <li class="my-2">
-                  <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i> Twitter</p>
-                </li>
-                <li class="my-2">
-                  <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i> Facebook</p>
-                  
-                </li>
-                <li class="my-2">
-                  <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Instagram</p>
-                  
-                </li>
-                <li class="my-2">
-                  <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Youtube</p>
-                </li>
-    
-    
-              </ul>
-              
-          </div>
-          <hr class="my-5">
-          <ul class="sitiFoot">
-            <li class="my-3 social center-align">
-              <a href=""><i class="fa-brands fa-x-twitter" style="color: #a9a066;"></i></a>
-              <a href=""><i class="fa-brands fa-facebook-f" style="color: #a9a066;"></i></a>
-              <a href=""><i class="fa-brands fa-instagram" style="color: #a9a066;"></i></a>
-              <a href=""><i class="fa-brands fa-youtube" style="color: #a9a066;"></i></a>
+          <ul class="navbar-nav justify-content-center flex-grow-1 ">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="homeUtente.html"><i class="fa fa-home me-1"
+                  aria-hidden="true"></i>Home</a>
             </li>
           </ul>
-          <h5 class=" fs-4 text-center"><strong>NomeSito</strong></h5>
-        </div>
-        <a href="#return"><button type="button" class="btn freccia"><i class="fa-solid fa-arrow-up"></i></button></a>
-      </div>
-    
-      <div class="footer-copyright text-center py-3  text-white">
-        <i style="color: #a9a066;">©Copyright</i> <strong>Non ci resta che piangere</strong>
-    
-      </div>
-    
-    </footer>
-    
+          <ul class="navbar-nav ">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                id="dropdown">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" style="border-radius: 0;">
+                <li><a class="dropdown-item" href="homeUtente.html">Home</a></li>
+                <li><a class="dropdown-item" href="prenotazioni.html">Le mie prenotazioni</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#" id="btnLogOut">Logout</a></li>
+              </ul>
 
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-     <script src="./js/prenotazioni.js"></script>
+          </ul>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="row" id="prenotazioni">
+    </div>
+  </div>
+
+  <hr class="mt-5">
+
+  <footer class="mt-5">
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-3 mx-auto ">
+
+          <img src="./img/mappa.jpg">
+
+        </div>
+        <div class="col-lg-3 mx-auto ">
+
+          <h5 class="mb-4">Info</h5>
+          <ul class="list-unstyled  my-2  info">
+            <li>
+              <i class="fa-solid fa-location-dot my-3" style="color: #a9a066;"></i>Centro Direzionale, NA 535022, IT
+            </li>
+
+            <li>
+              <i class="fa-solid fa-phone my-3" style="color: #a9a066;"></i><strong>Phone:</strong>+39 5589 55488 55
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope my-3" style="color: #a9a066;"></i><strong>Email:</strong>
+              grandview@gmail.com
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="col-lg-2 mx-auto ">
+
+          <h6 class=" mb-3">Link Utili</h5>
+
+            <ul class="list-unstyled fw-">
+              <li class="my-2">
+                <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Home</p>
+              </li>
+              <li class="my-2">
+                <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Eventi Disponibili</p>
+              </li>
+              <li class="my-2">
+                <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Eventi Futuri</p>
+              </li>
+              <li class="my-2">
+                <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Top 3</p>
+              </li>
+              <li class="my-2">
+                <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Calendario</p>
+              </li>
+            </ul>
+
+        </div>
+
+        <div class="col-lg-3 mx-auto">
+
+          <h6 class="mb-4">Social</h5>
+            <ul class="list-unstyled fw-">
+              <li class="my-2">
+                <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i> Twitter</p>
+              </li>
+              <li class="my-2">
+                <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i> Facebook</p>
+
+              </li>
+              <li class="my-2">
+                <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Instagram</p>
+
+              </li>
+              <li class="my-2">
+                <p class="text-white"><i class="ri-arrow-right-s-line text-white"></i>Youtube</p>
+              </li>
+
+
+            </ul>
+
+        </div>
+        <hr class="my-5">
+        <ul class="sitiFoot">
+          <li class="my-3 social center-align">
+            <a href=""><i class="fa-brands fa-x-twitter" style="color: #a9a066;"></i></a>
+            <a href=""><i class="fa-brands fa-facebook-f" style="color: #a9a066;"></i></a>
+            <a href=""><i class="fa-brands fa-instagram" style="color: #a9a066;"></i></a>
+            <a href=""><i class="fa-brands fa-youtube" style="color: #a9a066;"></i></a>
+          </li>
+        </ul>
+        <img class="logoF mb-4" src="./img/Grandwiev_Event2.png" alt="">
+        <h5 class=" fs-4 text-center"><strong>GrandView</strong></h5>
+      </div>
+      <a href="#return"><button type="button" class="btn freccia"><i class="fa-solid fa-arrow-up"></i></button></a>
+    </div>
+
+    <div class="footer-copyright text-center py-3  text-white">
+      <i style="color: #a9a066;">©Copyright</i> <strong>Non ci resta che piangere</strong>
+
+    </div>
+
+  </footer>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="./js/prenotazioni.js"></script>
 </body>
+
 </html>

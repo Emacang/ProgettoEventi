@@ -34,6 +34,10 @@
       background-repeat: no-repeat;
   
   }
+
+  .swiper-pagination-bullet-active{
+    background-color: #a9a066;
+  }
   
   /* aumentare la trasparenza dello sfondo e div scrritta del 100% */
   
@@ -177,6 +181,11 @@
     background-size: cover;
   }
 
+  /* #cale{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight:900;
+  } */
+
 
   /* .listaEventi{
 
@@ -244,4 +253,20 @@
   border: 1px solid #903838;
   background-color: #903838;
   color: white;
+}
+
+.logoF{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 5rem;
+  width: auto;
+}
+
+.newsLetter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10rem;
+    margin-bottom: 1rem;
 }

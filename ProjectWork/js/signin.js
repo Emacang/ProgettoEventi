@@ -17,6 +17,18 @@ loginButton.addEventListener('click', (e) => {
 	logIn(e);
 });
 
+document.addEventListener('DOMContentLoaded', function(){
+
+    let user = JSON.parse(localStorage.getItem("utente"));
+    let tipoUtente = user.tipo;
+
+    if(tipoUtente == "B"){
+            window.location.href = "homeUtente.html"
+    }else if((tipoUtente == "A")){
+        window.location.href = "homeAdmin.html"
+    }
+});
+
 
 
 function logIn(e) {
@@ -47,7 +59,7 @@ function logIn(e) {
 		if (tipoUtente == "A"){
 
 			
-		window.location.href = "HomeAdmin.html"
+		window.location.href = "homeAdmin.html"
 		}else if(tipoUtente == "B"){
 			window.location.href = "homeUtente.html"
 		}else{
@@ -56,16 +68,9 @@ function logIn(e) {
 
 	} else {
 
-		// let alert = `
-        //                 <div class="alert alert-danger alert-dismissible fade show position-fixed bottom-0 end-0" role="alert">
-        //                      Email o Password errate.
-        //                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        //                 </div>`
-
 		let dimenticata = ` <div style="color: red;"> Email o Password errate</div>`
 
 						forget.innerHTML = dimenticata;
-		// throw "utente non registrato"
 	}
 	})
 	.catch(err => console.log(err))

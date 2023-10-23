@@ -28,10 +28,36 @@
     color:#000000;
     font-size: 1rem;
     text-align: center;
-    padding-left: 10%;
+    /* padding-left: 10%; */
+    float: right;
    
 }
 
 .btn-warning .data-futuri{
     justify-content: center;
 }
+
+.btnAddn{
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /* font-size: 16px; */
+    margin: 4px 2px;
+    border-radius: 8px;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btnDel{
+    background-color: #903838;
+}
+
+.logo{
+    height: 2rem;
+	width: auto;
+  }

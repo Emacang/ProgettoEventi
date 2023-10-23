@@ -1,0 +1,9 @@
+.accordion-button::after {
+    position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: rotate(0deg) translateY(50%);
+    }
+    .accordion-button:not(.collapsed)::after {
+        transform: var(--bs-accordion-btn-icon-transform) translateY(50%);
+    }

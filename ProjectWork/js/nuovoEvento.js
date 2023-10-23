@@ -1,3 +1,16 @@
+document.addEventListener('DOMContentLoaded', function(){
+
+    let user = JSON.parse(localStorage.getItem("utente"));
+    let tipoUtente = user.tipo;
+
+    if(localStorage.getItem("utente") === null){
+            window.location.href = "home.html"
+
+    }else if((tipoUtente == "B")){
+        window.location.href = "homeUtente.html"
+    }
+});
+
 let subB = document.getElementById("submitButton");
 
 subB.addEventListener('click', (e) => {
@@ -40,12 +53,30 @@ function addEvento(e) {
         
     })
         .then(response => {
-            statusCode = response.status; // salvo lo status della response
-            return response.json(); // restituisco il json convertito
+            statusCode = response.status; 
+            return response.json(); 
         })
         .then(evento => {
             console.log(evento);
 
         });
 
+        mostraAlert("Nuovo evento aggiunto alla lista")
+
+        setTimeout(function () {
+            window.location.href = "amministraEventi.html"
+        }, 1000);
+
+}
+
+function mostraAlert(message, type = 'success') {
+    let alertDiv = document.createElement('div');
+    alertDiv.classList.add('alert', `alert-${type}`,'sticky-bottom', 'text-center', 'bottom-0', 'end-0', 'm-3');
+    alertDiv.textContent = message;
+
+    document.body.appendChild(alertDiv);
+
+    setTimeout(function () {
+        alertDiv.remove();
+    }, 3000);
 }
