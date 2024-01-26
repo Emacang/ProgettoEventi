@@ -34,3 +34,4 @@ replay_pid*
 
 ### VS Code ###
 .vscode/
+Prj_Eventi/src/main/resources/application.properties
